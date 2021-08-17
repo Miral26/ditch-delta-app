@@ -1,4 +1,4 @@
-# ditch-delta-app
+# ditch-delta
 
 ## Project setup
 ```

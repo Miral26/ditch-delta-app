@@ -1,11 +1,20 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import unAuthenticate from '../auth/unAuthenticate'
+import authenticate from '../auth/authenticate'
 
 const routes = [
+  {
+    path: "/signIn",
+    name: "Authentication",
+    beforeEnter: unAuthenticate,
+    component: () => import('../views/app/session/signIn.vue')
+  },
   {
     path: "/app",
     name: "HomePageDashboard",
     component: () => import('../containers/layouts/sidebar'),
     redirect: "/app/claims",
+    beforeEnter: authenticate,
     children: [
       {
         path: "/app/claims",
