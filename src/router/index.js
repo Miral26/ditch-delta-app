@@ -4,6 +4,12 @@ import authenticate from '../auth/authenticate'
 
 const routes = [
   {
+    path: "/",
+    name: "Landing",
+    beforeEnter: unAuthenticate,
+    redirect: "/signIn"
+  },
+  {
     path: "/signIn",
     name: "Authentication",
     beforeEnter: unAuthenticate,
