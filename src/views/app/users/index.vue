@@ -16,10 +16,12 @@
 </template>
 
 <script>
-import UsersTable from "../../../components/usersTable";
+import UsersTable from "./user-table.vue";
+
 export default {
   name: "Users",
-  setup() {},
+  data() {},
   components: { UsersTable },
+  methods: {},
 };
 </script>

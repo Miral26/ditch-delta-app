@@ -159,15 +159,141 @@
               </div>
             </nav>
           </div>
+
           <div class="flex-shrink-0 flex border-t border-gray-200 p-4">
-            <a href="#" class="flex-shrink-0 w-full group block">
+            <!-- <Menu as="div" class="relative inline-block text-left">
+              <div>
+                <MenuButton
+                  class="
+                    bg-green-100
+                    rounded-lg
+                    flex
+                    w-40
+                    items-center
+                    text-gray-400
+                    hover:text-gray-600
+                    focus:outline-none
+                    focus:ring-2
+                    focus:ring-offset-2
+                    focus:ring-offset-gray-100
+                    focus:ring-green-500
+                    mr-3
+                    pl-2
+                    pr-4
+                    py-2
+                  "
+                >
+                  <span class="sr-only">Open options</span>
+                  <HomeIcon class="h-5 w-5 text-green-200" aria-hidden="true" />
+                </MenuButton>
+              </div>
+
+              <transition
+                enter-active-class="transition ease-out duration-100"
+                enter-from-class="transform opacity-0 scale-95"
+                enter-to-class="transform opacity-100 scale-100"
+                leave-active-class="transition ease-in duration-75"
+                leave-from-class="transform opacity-100 scale-100"
+                leave-to-class="transform opacity-0 scale-95"
+              >
+                <MenuItems
+                  class="
+                    origin-top-right
+                    absolute
+                    right-0
+                    mt-2
+                    w-56
+                    rounded-md
+                    shadow-lg
+                    bg-white
+                    ring-1 ring-black ring-opacity-5
+                    focus:outline-none
+                  "
+                >
+                  <div class="py-1">
+                    <MenuItem v-slot="{ active }">
+                      <a
+                        href="#"
+                        :class="[
+                          active
+                            ? 'bg-gray-100 text-gray-900'
+                            : 'text-gray-700',
+                          'block px-4 py-2 text-sm',
+                        ]"
+                        >Account settings</a
+                      >
+                    </MenuItem>
+                    <MenuItem v-slot="{ active }">
+                      <a
+                        href="#"
+                        :class="[
+                          active
+                            ? 'bg-gray-100 text-gray-900'
+                            : 'text-gray-700',
+                          'block px-4 py-2 text-sm',
+                        ]"
+                        >Support</a
+                      >
+                    </MenuItem>
+                    <MenuItem v-slot="{ active }">
+                      <a
+                        href="#"
+                        :class="[
+                          active
+                            ? 'bg-gray-100 text-gray-900'
+                            : 'text-gray-700',
+                          'block px-4 py-2 text-sm',
+                        ]"
+                        >License</a
+                      >
+                    </MenuItem>
+                    <MenuItem v-slot="{ active }">
+                      <button
+                        type="submit"
+                        @click="
+                          () => {
+                            signOut();
+                            $router.push('/signIn');
+                          }
+                        "
+                        :class="[
+                          active
+                            ? 'bg-gray-100 text-gray-900'
+                            : 'text-gray-700',
+                          'block w-full text-left px-4 py-2 text-sm',
+                        ]"
+                      >
+                        Sign out
+                      </button>
+                    </MenuItem>
+                  </div>
+                </MenuItems>
+              </transition>
+            </Menu> -->
+
+            <div class="flex-shrink-0 w-full group block">
               <div class="flex items-center">
                 <div>
-                  <img
-                    class="inline-block h-9 w-9 rounded-full"
-                    src="https://images.unsplash.com/photo-1517365830460-955ce3ccd263?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=256&h=256&q=80"
-                    alt=""
-                  />
+                  <span class="inline-block relative">
+                    <img
+                      class="h-10 w-10 rounded-full"
+                      src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                      alt=""
+                    />
+                    <span
+                      class="
+                        absolute
+                        bottom-0
+                        right-0
+                        block
+                        h-2.5
+                        w-2.5
+                        rounded-full
+                        ring-2 ring-white
+                        bg-green-400
+                      "
+                    />
+                  </span>
                 </div>
                 <div class="ml-3">
                   <p
@@ -180,19 +306,9 @@
                   >
                     Whitney Francis
                   </p>
-                  <p
-                    class="
-                      text-xs
-                      font-medium
-                      text-gray-500
-                      group-hover:text-gray-700
-                    "
-                  >
-                    View profile
-                  </p>
                 </div>
               </div>
-            </a>
+            </div>
           </div>
         </div>
       </div>
@@ -228,6 +344,7 @@ import {
 import Topbar from "./topBar.vue";
 import Sidebar from "./sidebar.vue";
 import Logo from "../../../assests/images/logo.png";
+import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/vue";
 
 const navigation = [
   {
@@ -270,6 +387,10 @@ export default {
     DialogOverlay,
     TransitionChild,
     TransitionRoot,
+    Menu,
+    MenuButton,
+    MenuItem,
+    MenuItems,
     BellIcon,
     CashIcon,
     CheckCircleIcon,

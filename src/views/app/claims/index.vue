@@ -24,8 +24,8 @@
                     text-base
                     border-gray-300
                     focus:outline-none
-                    focus:ring-indigo-500
-                    focus:border-indigo-500
+                    focus:ring-green-500
+                    focus:border-green-500
                     sm:text-sm
                     rounded-md
                   "
@@ -50,7 +50,7 @@
                       @click="selectedTab = tab.id"
                       :class="[
                         tab.id === selectedTab
-                          ? 'text-indigo-600'
+                          ? 'text-green-600'
                           : 'text-gray-500 hover:text-gray-700',
                         'whitespace-nowrap py-4 px-1 font-medium text-sm cursor-pointer',
                       ]"
@@ -59,7 +59,7 @@
                       <span
                         :class="[
                           tab.id === selectedTab
-                            ? 'w-5 h-0.5 bg-indigo-500 table mx-auto mt-1.5'
+                            ? 'w-5 h-0.5 bg-green-500 table mx-auto mt-1.5'
                             : '',
                         ]"
                       ></span>
@@ -89,8 +89,8 @@
                   <div
                     :class="[
                       file.current
-                        ? 'ring-2 ring-offset-2 ring-indigo-500'
-                        : 'focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-offset-gray-100 focus-within:ring-indigo-500',
+                        ? 'ring-2 ring-offset-2 ring-green-500'
+                        : 'focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-offset-gray-100 focus-within:ring-green-500',
                       'group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden',
                     ]"
                   >
@@ -154,7 +154,6 @@ import {
   PhotographIcon,
   UserGroupIcon,
 } from "@heroicons/vue/outline";
-
 const navigation = [
   { name: "Home", href: "#", icon: HomeIcon, current: false },
   // { name: "All Files", href: "#", icon: ViewGridIconOutline, current: false },
@@ -223,6 +222,5 @@ export default {
       selectedTab: "in-progress",
     };
   },
-  components: {},
 };
 </script>
