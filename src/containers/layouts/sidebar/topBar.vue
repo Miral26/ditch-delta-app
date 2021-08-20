@@ -5,7 +5,6 @@
       z-10
       flex-shrink-0 flex
       h-16
-      bg-white
       border-b border-gray-200
       lg:border-none
     "
@@ -65,6 +64,7 @@
                 pr-3
                 py-2
                 border-transparent
+                bg-transparent
                 text-gray-900
                 placeholder-gray-500
                 focus:outline-none
@@ -83,9 +83,10 @@
           <div>
             <MenuButton
               class="
-                bg-gray-100
-                rounded-full
+                bg-green-100
+                rounded-lg
                 flex
+                w-40
                 items-center
                 text-gray-400
                 hover:text-gray-600
@@ -94,11 +95,14 @@
                 focus:ring-offset-2
                 focus:ring-offset-gray-100
                 focus:ring-indigo-500
-                mr-10
+                mr-3
+                pl-2
+                pr-4
+                py-2
               "
             >
               <span class="sr-only">Open options</span>
-              <HomeIcon class="h-5 w-5" aria-hidden="true" />
+              <HomeIcon class="h-5 w-5 text-green-200" aria-hidden="true" />
             </MenuButton>
           </div>
 

@@ -7,6 +7,7 @@
       <div class="flex-1 flex items-stretch overflow-hidden">
         <main class="flex-1 overflow-y-auto">
           <div class="pt-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h3 class="font-semibold text-xl">Claims</h3>
             <!-- Tabs -->
             <div class="mt-3 sm:mt-2">
               <div class="sm:hidden">
@@ -29,15 +30,15 @@
                     rounded-md
                   "
                 >
-                  <option selected="">Recently Viewed</option>
-                  <option>Recently Added</option>
-                  <option>Favorited</option>
+                  <option selected="">In Progress</option>
+                  <option>Pending</option>
+                  <option>Completed</option>
                 </select>
               </div>
               <div class="hidden sm:block">
-                <div class="flex items-center border-b border-gray-200">
+                <div class="flex items-center">
                   <nav
-                    class="flex-1 -mb-px flex space-x-6 xl:space-x-8"
+                    class="flex-1 -mb-px flex space-x-3"
                     aria-label="Tabs"
                   >
                     <a
@@ -47,64 +48,22 @@
                       :aria-current="tab.current ? 'page' : undefined"
                       :class="[
                         tab.current
-                          ? 'border-indigo-500 text-indigo-600'
-                          : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300',
-                        'whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm',
+                          ? 'text-indigo-600'
+                          : 'text-gray-500 hover:text-gray-700',
+                        'whitespace-nowrap py-4 px-1 font-medium text-sm',
                       ]"
                     >
                       {{ tab.name }}
+                      <span :class="[ tab.current ? 'w-5 h-0.5 bg-indigo-500 table mx-auto mt-1.5' : '']"></span>
                     </a>
                   </nav>
-                  <div
-                    class="
-                      hidden
-                      ml-6
-                      bg-gray-100
-                      p-0.5
-                      rounded-lg
-                      items-center
-                      sm:flex
-                    "
-                  >
-                    <button
-                      type="button"
-                      class="
-                        p-1.5
-                        rounded-md
-                        text-gray-400
-                        hover:bg-white
-                        hover:shadow-sm
-                        focus:outline-none
-                        focus:ring-2 focus:ring-inset focus:ring-indigo-500
-                      "
-                    >
-                      <ViewListIcon class="h-5 w-5" aria-hidden="true" />
-                      <span class="sr-only">Use list view</span>
-                    </button>
-                    <button
-                      type="button"
-                      class="
-                        ml-0.5
-                        bg-white
-                        p-1.5
-                        rounded-md
-                        shadow-sm
-                        text-gray-400
-                        focus:outline-none
-                        focus:ring-2 focus:ring-inset focus:ring-indigo-500
-                      "
-                    >
-                      <ViewGridIconSolid class="h-5 w-5" aria-hidden="true" />
-                      <span class="sr-only">Use grid view</span>
-                    </button>
-                  </div>
                 </div>
               </div>
             </div>
 
             <!-- Gallery -->
             <section class="mt-8 pb-16" aria-labelledby="gallery-heading">
-              <h2 id="gallery-heading" class="sr-only">Recently viewed</h2>
+              <h2 id="gallery-heading" class="sr-only">In Progress</h2>
               <ul
                 role="list"
                 class="
@@ -186,16 +145,11 @@ import {
   HomeIcon,
   PhotographIcon,
   UserGroupIcon,
-  ViewGridIcon as ViewGridIconOutline,
 } from "@heroicons/vue/outline";
-import {
-  ViewGridIcon as ViewGridIconSolid,
-  ViewListIcon,
-} from "@heroicons/vue/solid";
 
 const navigation = [
   { name: "Home", href: "#", icon: HomeIcon, current: false },
-  { name: "All Files", href: "#", icon: ViewGridIconOutline, current: false },
+  // { name: "All Files", href: "#", icon: ViewGridIconOutline, current: false },
   { name: "Photos", href: "#", icon: PhotographIcon, current: true },
   { name: "Shared", href: "#", icon: UserGroupIcon, current: false },
   { name: "Albums", href: "#", icon: CollectionIcon, current: false },
@@ -206,9 +160,9 @@ const userNavigation = [
   { name: "Sign out", href: "#" },
 ];
 const tabs = [
-  { name: "Recently Viewed", href: "#", current: true },
-  { name: "Recently Added", href: "#", current: false },
-  { name: "Favorited", href: "#", current: false },
+  { name: "In Progress", href: "#", current: true },
+  { name: "Pending", href: "#", current: false },
+  { name: "Completed", href: "#", current: false },
 ];
 const files = [
   {
@@ -249,10 +203,6 @@ const currentFile = {
 };
 
 export default {
-  components: {
-    ViewGridIconSolid,
-    ViewListIcon,
-  },
   setup() {
     const mobileMenuOpen = ref(false);
 
