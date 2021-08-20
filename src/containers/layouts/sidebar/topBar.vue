@@ -159,19 +159,23 @@
                     >License</a
                   >
                 </MenuItem>
-                <form method="POST" action="#">
-                  <MenuItem v-slot="{ active }">
-                    <button
-                      type="submit"
-                      :class="[
-                        active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                        'block w-full text-left px-4 py-2 text-sm',
-                      ]"
-                    >
-                      Sign out
-                    </button>
-                  </MenuItem>
-                </form>
+                <MenuItem v-slot="{ active }">
+                  <button
+                    type="submit"
+                    @click="
+                      () => {
+                        signOut();
+                        $router.push('/signIn');
+                      }
+                    "
+                    :class="[
+                      active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                      'block w-full text-left px-4 py-2 text-sm',
+                    ]"
+                  >
+                    Sign out
+                  </button>
+                </MenuItem>
               </div>
             </MenuItems>
           </transition>
@@ -206,6 +210,7 @@
 <script>
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/vue";
 import { HomeIcon, MenuAlt1Icon, SearchIcon } from "@heroicons/vue/outline";
+import { mapActions } from "vuex";
 
 export default {
   components: {
@@ -218,5 +223,8 @@ export default {
     HomeIcon,
   },
   setup() {},
+  methods: {
+    ...mapActions(["signOut"]),
+  },
 };
 </script>

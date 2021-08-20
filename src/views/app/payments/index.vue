@@ -29,32 +29,39 @@
                     rounded-md
                   "
                 >
-                  <option selected="">Pending</option>
-                  <option>Completed</option>
-                  <option>Refunded</option>
-                  <option>Failed</option>
+                  <option
+                    v-for="tab in tabs"
+                    :key="tab.name"
+                    :selected="tab.id === selectedTab"
+                  >
+                    {{ tab.name }}
+                  </option>
                 </select>
               </div>
+
               <div class="hidden sm:block">
                 <div class="flex items-center">
-                  <nav
-                    class="flex-1 -mb-px flex space-x-3"
-                    aria-label="Tabs"
-                  >
+                  <nav class="flex-1 -mb-px flex space-x-3" aria-label="Tabs">
                     <a
                       v-for="tab in tabs"
-                      :key="tab.name"
-                      :href="tab.href"
-                      :aria-current="tab.current ? 'page' : undefined"
+                      :key="tab.id"
+                      :aria-current="tab.id ? 'page' : undefined"
+                      @click="selectedTab = tab.id"
                       :class="[
-                        tab.current
+                        selectedTab === tab.id
                           ? 'text-indigo-600'
                           : 'text-gray-500 hover:text-gray-700',
-                        'whitespace-nowrap py-4 px-1 font-medium text-sm',
+                        'whitespace-nowrap py-4 px-1 font-medium text-sm cursor-pointer',
                       ]"
                     >
                       {{ tab.name }}
-                      <span :class="[ tab.current ? 'w-5 h-0.5 bg-indigo-500 table mx-auto mt-1.5' : '']"></span>
+                      <span
+                        :class="[
+                          selectedTab === tab.id
+                            ? 'w-5 h-0.5 bg-indigo-500 table mx-auto mt-1.5'
+                            : '',
+                        ]"
+                      ></span>
                     </a>
                   </nav>
                 </div>
@@ -160,10 +167,10 @@ const userNavigation = [
   { name: "Sign out", href: "#" },
 ];
 const tabs = [
-  { name: "Pending", href: "#", current: true },
-  { name: "Completed", href: "#", current: false },
-  { name: "Refunded", href: "#", current: false },
-  { name: "Failed", href: "#", current: false },
+  { name: "Pending", id: "pending" },
+  { name: "Completed", id: "completed" },
+  { name: "Refunded", id: "refunded" },
+  { name: "Failed", id: "failed" },
 ];
 const files = [
   {
@@ -204,7 +211,7 @@ const currentFile = {
 };
 
 export default {
-  setup() {
+  data() {
     const mobileMenuOpen = ref(false);
 
     return {
@@ -214,6 +221,7 @@ export default {
       files,
       currentFile,
       mobileMenuOpen,
+      selectedTab: "pending",
     };
   },
 };

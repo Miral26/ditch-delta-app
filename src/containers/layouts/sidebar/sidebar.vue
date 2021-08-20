@@ -131,12 +131,14 @@
             </div>
             <nav class="mt-5 flex-1" aria-label="Sidebar">
               <div class="px-2 space-y-1">
-                <a
+                <router-link
                   v-for="item in navigation"
+                  tag="a"
+                  :to="item.redirectTo"
                   :key="item.name"
-                  :href="item.href"
+                  @click="selectedParentMenu = item.selectedParentMenu"
                   :class="[
-                    item.current
+                    item.selectedParentMenu === selectedParentMenu
                       ? 'bg-gray-200 text-gray-900'
                       : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900',
                     'group flex items-center px-2 py-2 text-sm font-medium rounded-md',
@@ -153,7 +155,7 @@
                     aria-hidden="true"
                   />
                   {{ item.name }}
-                </a>
+                </router-link>
               </div>
             </nav>
           </div>
@@ -228,15 +230,35 @@ import Sidebar from "./sidebar.vue";
 import Logo from "../../../assests/images/logo.png";
 
 const navigation = [
-  { name: "Claims", href: "claims", icon: HomeIcon, current: true },
-  { name: "Payments", href: "payments", icon: ClockIcon, current: false },
-  { name: "Patients", href: "patients", icon: ScaleIcon, current: false },
-  { name: "Users", href: "users", icon: UserGroupIcon, current: false },
+  {
+    name: "Claims",
+    redirectTo: "claims",
+    icon: HomeIcon,
+    selectedParentMenu: "claims",
+  },
+  {
+    name: "Payments",
+    redirectTo: "payments",
+    icon: ClockIcon,
+    selectedParentMenu: "payments",
+  },
+  {
+    name: "Patients",
+    redirectTo: "patients",
+    icon: ScaleIcon,
+    selectedParentMenu: "patients",
+  },
+  {
+    name: "Users",
+    redirectTo: "users",
+    icon: UserGroupIcon,
+    selectedParentMenu: "users",
+  },
   {
     name: "Insights",
-    href: "insights",
+    redirectTo: "insights",
     icon: DocumentReportIcon,
-    current: false,
+    selectedParentMenu: "insights",
   },
 ];
 
@@ -258,13 +280,30 @@ export default {
     XIcon,
     HomeIcon,
   },
-  setup() {
+  data() {
     const sidebarOpen = ref(false);
     return {
       navigation,
       sidebarOpen,
       logo: Logo,
+      selectedParentMenu: "",
     };
+  },
+  mounted() {
+    // console.log(`this.loggedInUser`, this.loggedInUser);
+    this.toggleSelectedParentMenu();
+  },
+  methods: {
+    toggleSelectedParentMenu() {
+      const currentParentUrl = this.$route.path
+        .split("/")
+        .filter((x) => x !== "")[1];
+      if (currentParentUrl !== undefined || currentParentUrl !== null) {
+        this.selectedParentMenu = currentParentUrl.toLowerCase();
+      } else {
+        this.selectedParentMenu = "claims";
+      }
+    },
   },
 };
 </script>

@@ -37,7 +37,7 @@
             Sign in to your account
           </h2>
         </div>
-        <form class="space-y-6" action="#" method="POST">
+        <form class="space-y-6" @submit.prevent="signIn">
           <div>
             <label for="email" class="block text-sm font-medium text-gray-700">
               Email address
@@ -47,8 +47,7 @@
                 id="email"
                 name="email"
                 type="email"
-                :value="{ email }"
-                @change="(e) => (email = e.target.value)"
+                v-model="email"
                 autocomplete="email"
                 required=""
                 class="
@@ -82,8 +81,7 @@
                 id="password"
                 name="password"
                 type="password"
-                :value="{ password }"
-                @change="(e) => (password = e.target.value)"
+                v-model="password"
                 autocomplete="current-password"
                 required=""
                 class="
@@ -286,18 +284,26 @@
 <script>
 import Logo from "../../../assests/images/logo.png";
 import Banner from "../../../assests/images/banner.png";
+import { mapActions } from "vuex";
 export default {
   data() {
     return {
+      logo: Logo,
+      banner: Banner,
       email: "",
       password: "",
     };
   },
-  setup() {
-    return {
-      logo: Logo,
-      banner: Banner,
-    };
+  methods: {
+    ...mapActions(["login"]),
+    signIn() {
+      if (this.email === "devin@coral.com" && this.password === "devin@123") {
+        this.login({ email: this.email });
+        this.$router.push("/app");
+      } else {
+        window.alert(`Invalid Credentials!`);
+      }
+    },
   },
 };
 </script>
