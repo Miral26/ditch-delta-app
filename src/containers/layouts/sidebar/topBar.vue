@@ -91,10 +91,6 @@
                 text-gray-400
                 hover:text-gray-600
                 focus:outline-none
-                focus:ring-2
-                focus:ring-offset-2
-                focus:ring-offset-gray-100
-                focus:ring-green-500
                 mr-3
                 pl-2
                 pr-4
@@ -124,7 +120,6 @@
                 rounded-md
                 shadow-lg
                 bg-white
-                ring-1 ring-black ring-opacity-5
                 focus:outline-none
               "
             >
@@ -197,7 +192,6 @@
             bg-green-600
             hover:bg-green-700
             focus:outline-none
-            focus:ring-2 focus:ring-offset-2 focus:ring-green-500
           "
         >
           Run daily job

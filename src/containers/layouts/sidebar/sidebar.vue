@@ -115,7 +115,7 @@
 
     <!-- Static sidebar for desktop -->
     <div class="hidden lg:flex lg:flex-shrink-0">
-      <div class="flex flex-col w-64">
+      <div class="flex flex-col w-56">
         <!-- Sidebar component, swap this element with another sidebar if you like -->
         <div
           class="
@@ -126,7 +126,7 @@
           "
         >
           <div class="flex-1 flex flex-col pt-5 pb-4 overflow-y-auto">
-            <div class="flex items-center flex-shrink-0 px-4">
+            <div class="flex items-center flex-shrink-0 justify-center px-4">
               <img class="h-8 w-auto" :src="logo" alt="Workflow" />
             </div>
             <nav class="mt-5 flex-1" aria-label="Sidebar">

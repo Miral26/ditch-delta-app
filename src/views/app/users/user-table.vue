@@ -48,7 +48,6 @@
                 uppercase
                 font-normal
                 focus:outline-none
-                focus:ring-2 focus:ring-offset-2 focus:ring-green-500
               "
               @click="openUserModal"
             >

@@ -56,9 +56,6 @@
               align-bottom
               bg-white
               rounded-lg
-              px-4
-              pt-5
-              pb-4
               text-left
               overflow-hidden
               shadow-xl
@@ -66,66 +63,110 @@
               transition-all
               sm:my-8
               sm:align-middle
-              sm:max-w-sm
+              sm:max-w-md
               sm:w-full
-              sm:p-6
             "
           >
             <div>
-              <div
-                class="
-                  mx-auto
-                  flex
-                  items-center
-                  justify-center
-                  h-12
-                  w-12
-                  rounded-full
-                  bg-green-100
-                "
+              <DialogTitle
+                as="h3"
+                class="text-lg leading-6 font-medium text-gray-900 p-4 border-b border-solid border-gray"
               >
-                <CheckIcon class="h-6 w-6 text-green-600" aria-hidden="true" />
-              </div>
-              <div class="mt-3 text-center sm:mt-5">
-                <DialogTitle
-                  as="h3"
-                  class="text-lg leading-6 font-medium text-gray-900"
-                >
-                  Payment successful
-                </DialogTitle>
-                <div class="mt-2">
-                  <p class="text-sm text-gray-500">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Consequatur amet labore.
-                  </p>
+                BootstrapVue
+                <div class="hidden sm:block absolute top-0 right-0 pt-4 pr-4">
+                  <button type="button" class="bg-white rounded-md text-gray-400 hover:text-gray-500 focus:outline-none" @click="onClose">
+                    <span class="sr-only">Close</span>
+                    <XIcon class="h-6 w-6" aria-hidden="true" />
+                  </button>
                 </div>
+              </DialogTitle>
+              <div class="p-4">
+                <div class="mb-3">
+                  <input
+                    name="search-field"
+                    class="
+                      block
+                      w-full
+                      py-2
+                      px-4
+                      border
+                      rounded
+                      bg-transparent
+                      placeholder-gray-500
+                      focus:outline-none
+                      focus:ring-0
+                      sm:text-sm
+                      text-white
+                    "
+                    placeholder="Enter your name..."
+                    type="text"
+                  />
+                </div>
+                <div class="mb-3">
+                  <input
+                    name="search-field"
+                    class="
+                      block
+                      w-full
+                      py-2
+                      px-4
+                      border
+                      rounded
+                      bg-transparent
+                      placeholder-gray-500
+                      focus:outline-none
+                      focus:ring-0
+                      sm:text-sm
+                      text-white
+                    "
+                    placeholder="Enter email"
+                    type="text"
+                  />
+                </div>
+                <div class="mb-3">
+                  <input
+                    name="search-field"
+                    class="
+                      block
+                      w-full
+                      py-2
+                      px-4
+                      border
+                      rounded
+                      bg-transparent
+                      placeholder-gray-500
+                      focus:outline-none
+                      focus:ring-0
+                      sm:text-sm
+                      text-white
+                    "
+                    placeholder="Permission Level..."
+                    type="text"
+                  />
+                </div>
+                <button
+                  type="button"
+                  class="
+                    inline-flex
+                    justify-center
+                    rounded-md
+                    border border-transparent
+                    shadow-sm
+                    px-4
+                    py-2
+                    bg-green-600
+                    text-base
+                    font-medium
+                    text-white
+                    hover:bg-green-700
+                    focus:outline-none
+                    sm:text-sm
+                  "
+                  @click="onClose"
+                >
+                  Submit
+                </button>
               </div>
-            </div>
-            <div class="mt-5 sm:mt-6">
-              <button
-                type="button"
-                class="
-                  inline-flex
-                  justify-center
-                  w-full
-                  rounded-md
-                  border border-transparent
-                  shadow-sm
-                  px-4
-                  py-2
-                  bg-green-600
-                  text-base
-                  font-medium
-                  text-white
-                  hover:bg-green-700
-                  focus:outline-none
-                  focus:ring-2 focus:ring-offset-2 focus:ring-green-500
-                  sm:text-sm
-                "
-                @click="onClose"
-              >
-                Go back to dashboard
-              </button>
             </div>
           </div>
         </TransitionChild>
@@ -141,8 +182,10 @@ import {
   DialogTitle,
   TransitionChild,
   TransitionRoot,
+  
 } from "@headlessui/vue";
-import { CheckIcon } from "@heroicons/vue/outline";
+import { XIcon } from '@heroicons/vue/outline'
+
 
 export default {
   components: {
@@ -151,7 +194,7 @@ export default {
     DialogTitle,
     TransitionChild,
     TransitionRoot,
-    CheckIcon,
+    XIcon
   },
   props: {
     open: Boolean,
