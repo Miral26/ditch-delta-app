@@ -8,5 +8,5 @@ import ECharts from "./plugins/echarts"
 const app = createApp(App).use(router);
 app.use(router);
 app.use(store);
-app.component("v-chart", ECharts);
+app.component('v-chart', ECharts)
 app.mount('#app');

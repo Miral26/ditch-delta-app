@@ -67,7 +67,9 @@
           </div>
         </div>
         <div class="w-9/12 px-3">
-          <div class="bg-white p-5 rounded-lg shadow w-full h-full">Table</div>
+          <div class="bg-white p-5 rounded-lg shadow w-full h-full">
+            <Table />
+          </div>
         </div>
       </div>
     </div>
@@ -77,8 +79,9 @@
 
 <script>
 import UserModal from "./user-modal.vue";
+import Table from "./table.vue";
 export default {
-  components: { UserModal },
+  components: { UserModal, Table },
   data() {
     return {
       showUserModal: false,

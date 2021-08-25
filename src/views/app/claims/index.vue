@@ -6,7 +6,7 @@
       <!-- Main content -->
       <div class="flex-1 flex items-stretch overflow-hidden">
         <main class="flex-1 overflow-y-auto">
-          <div class="pt-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="pt-8 max-w-9xl mx-auto px-4 sm:px-6 lg:px-8">
             <h3 class="font-semibold text-xl">Claims</h3>
             <!-- Tabs -->
             <div class="mt-3 sm:mt-2">
@@ -33,7 +33,7 @@
                   <option
                     v-for="tab in tabs"
                     :key="tab.name"
-                    :selected="tab.id === selectedTab"
+                    :selected="tab.id === selectedTab.id"
                   >
                     {{ tab.name }}
                   </option>
@@ -47,9 +47,9 @@
                       v-for="tab in tabs"
                       :key="tab.id"
                       :aria-current="tab.id ? 'page' : undefined"
-                      @click="selectedTab = tab.id"
+                      @click="selectedTab = tab"
                       :class="[
-                        tab.id === selectedTab
+                        tab.id === selectedTab.id
                           ? 'text-green-600'
                           : 'text-gray-500 hover:text-gray-700',
                         'whitespace-nowrap py-4 px-1 font-medium text-sm cursor-pointer',
@@ -58,7 +58,7 @@
                       {{ tab.name }}
                       <span
                         :class="[
-                          tab.id === selectedTab
+                          tab.id === selectedTab.id
                             ? 'w-5 h-0.5 bg-green-500 table mx-auto mt-1.5'
                             : '',
                         ]"
@@ -70,73 +70,30 @@
             </div>
 
             <!-- Gallery -->
-            <section class="mt-8 pb-16" aria-labelledby="gallery-heading">
-              <h2 id="gallery-heading" class="sr-only">In Progress</h2>
-              <ul
-                role="list"
+            <section class="mt-8 pb-16">
+              <!-- <button
+                type="button"
                 class="
-                  grid grid-cols-2
-                  gap-x-4 gap-y-8
-                  sm:grid-cols-3
-                  sm:gap-x-6
-                  md:grid-cols-4
-                  lg:grid-cols-3
-                  xl:grid-cols-4
-                  xl:gap-x-8
+                  inline-flex
+                  items-center
+                  px-4
+                  py-2
+                  border border-transparent
+                  shadow-sm
+                  text-sm
+                  font-medium
+                  rounded-full
+                  text-white
+                  bg-green-600
+                  hover:bg-green-700
+                  focus:outline-none
+                  focus:ring-2 focus:ring-offset-2 focus:ring-green-500
                 "
               >
-                <li v-for="file in files" :key="file.name" class="relative">
-                  <div
-                    :class="[
-                      file.current
-                        ? 'ring-2 ring-offset-2 ring-green-500'
-                        : 'focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-offset-gray-100 focus-within:ring-green-500',
-                      'group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden',
-                    ]"
-                  >
-                    <img
-                      :src="file.source"
-                      alt=""
-                      :class="[
-                        file.current ? '' : 'group-hover:opacity-75',
-                        'object-cover pointer-events-none',
-                      ]"
-                    />
-                    <button
-                      type="button"
-                      class="absolute inset-0 focus:outline-none"
-                    >
-                      <span class="sr-only"
-                        >View details for {{ file.name }}</span
-                      >
-                    </button>
-                  </div>
-                  <p
-                    class="
-                      mt-2
-                      block
-                      text-sm
-                      font-medium
-                      text-gray-900
-                      truncate
-                      pointer-events-none
-                    "
-                  >
-                    {{ file.name }}
-                  </p>
-                  <p
-                    class="
-                      block
-                      text-sm
-                      font-medium
-                      text-gray-500
-                      pointer-events-none
-                    "
-                  >
-                    {{ file.size }}
-                  </p>
-                </li>
-              </ul>
+                <PlusSmIcon class="-ml-1 mr-2 h-5 w-5" aria-hidden="true" />
+                Create
+              </button> -->
+              <Table :selectedTab="selectedTab" />
             </section>
           </div>
         </main>
@@ -154,6 +111,8 @@ import {
   PhotographIcon,
   UserGroupIcon,
 } from "@heroicons/vue/outline";
+// import { PlusSmIcon } from "@heroicons/vue/solid";
+import Table from "./table.vue";
 const navigation = [
   { name: "Home", href: "#", icon: HomeIcon, current: false },
   // { name: "All Files", href: "#", icon: ViewGridIconOutline, current: false },
@@ -210,6 +169,7 @@ const currentFile = {
 };
 
 export default {
+  components: { Table },
   data() {
     const mobileMenuOpen = ref(false);
     return {
@@ -219,7 +179,7 @@ export default {
       files,
       currentFile,
       mobileMenuOpen,
-      selectedTab: "in-progress",
+      selectedTab: { name: "In Progress", id: "in-progress" },
     };
   },
 };

@@ -1,6 +1,6 @@
 var dark_heading = "#c2c6dc";
 
-import {zoomBarData} from "@/data/echartSeries";
+import { zoomBarData } from "@/data/echartSeries";
 
 // start::echartPie
 export const echartPie = {
@@ -17,12 +17,12 @@ export const echartPie = {
       radius: "50%",
       center: "50%",
       data: [
-        {value: 535, name: "USA"},
-        {value: 310, name: "Brazil"},
-        {value: 234, name: "France"},
-        {value: 155, name: "BD"},
-        {value: 130, name: "UK"},
-        {value: 348, name: "India"},
+        { value: 535, name: "USA" },
+        { value: 310, name: "Brazil" },
+        { value: 234, name: "France" },
+        { value: 155, name: "BD" },
+        { value: 130, name: "UK" },
+        { value: 348, name: "India" },
       ],
       itemStyle: {
         emphasis: {
@@ -135,7 +135,7 @@ export const echartBar = {
         20000,
         30005,
       ],
-      label: {show: false, color: "#0168c1"},
+      label: { show: false, color: "#0168c1" },
       type: "bar",
       barGap: 0,
       color: "#DDD6FE",
@@ -165,7 +165,7 @@ export const echartBar = {
         35000,
         40050,
       ],
-      label: {show: false, color: "#A855F7"},
+      label: { show: false, color: "#A855F7" },
       type: "bar",
       color: "#A78BFA",
       smooth: true,
@@ -260,7 +260,7 @@ export const basicLine = {
       show: true,
     },
   },
-  label: {show: false},
+  label: { show: false },
   series: [
     {
       data: [
@@ -865,7 +865,7 @@ export const zoomBar = {
       // For shadow
       type: "bar",
       itemStyle: {
-        normal: {color: "rgba(0,0,0,0.05)"},
+        normal: { color: "rgba(0,0,0,0.05)" },
       },
       barGap: "-100%",
       barCategoryGap: "40%",
@@ -947,12 +947,12 @@ export const basicDoughnut = {
         },
       },
       data: [
-        {value: 335, name: "Organic"},
-        {value: 310, name: "Search Eng."},
-        {value: 234, name: "Email"},
-        {value: 135, name: "Referal"},
-        {value: 148, name: "Social"},
-        {value: 548, name: "Others"},
+        { value: 335, name: "Organic" },
+        { value: 310, name: "Search Eng." },
+        { value: 234, name: "Email" },
+        { value: 135, name: "Referal" },
+        { value: 148, name: "Social" },
+        { value: 548, name: "Others" },
       ],
       itemStyle: {
         emphasis: {
@@ -979,8 +979,8 @@ export const gaugeStart = {
     {
       name: "业务指标",
       type: "gauge",
-      detail: {formatter: "{value}%"},
-      data: [{value: 50, name: "完成率"}],
+      detail: { formatter: "{value}%" },
+      data: [{ value: 50, name: "完成率" }],
     },
   ],
 };
@@ -1921,7 +1921,7 @@ export const stackedPie = {
           value: 400,
           name: "Search ",
         },
-      ].sort(function(a, b) {
+      ].sort(function (a, b) {
         return a.value - b.value;
       }),
       roseType: "radius",
@@ -1952,7 +1952,7 @@ export const stackedPie = {
 
       animationType: "scale",
       animationEasing: "elasticOut",
-      animationDelay: function() {
+      animationDelay: function () {
         return Math.random() * 200;
       },
     },
