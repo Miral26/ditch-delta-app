@@ -15,8 +15,12 @@
   ```
 -->
 <template>
-  <TransitionRoot as="template" :show="openModal">
-    <Dialog as="div" class="fixed inset-0 overflow-hidden" @close="closeModal">
+  <TransitionRoot as="template" :show="showPatientModal">
+    <Dialog
+      as="div"
+      class="fixed inset-0 overflow-hidden"
+      @close="() => setPatientModal(false)"
+    >
       <div class="absolute inset-0 overflow-hidden">
         <DialogOverlay class="absolute inset-0" />
 
@@ -57,7 +61,7 @@
                         <button
                           type="button"
                           class="text-gray-400 hover:text-gray-500"
-                          @click="closeModal"
+                          @click="() => setPatientModal(false)"
                         >
                           <span class="sr-only">Close panel</span>
                           <XIcon class="h-6 w-6" aria-hidden="true" />
@@ -440,7 +444,7 @@
                         focus:outline-none
                         focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500
                       "
-                      @click="closeModal"
+                      @click="() => setPatientModal(false)"
                     >
                       Cancel
                     </button>
@@ -490,6 +494,7 @@ import {
   PlusIcon,
   QuestionMarkCircleIcon,
 } from "@heroicons/vue/solid";
+import { mapActions, mapGetters } from "vuex";
 
 const team = [
   {
@@ -541,7 +546,12 @@ export default {
     QuestionMarkCircleIcon,
     XIcon,
   },
-  props: { openModal: Boolean, closeModal: Function },
+  computed: {
+    ...mapGetters(["showPatientModal"]),
+  },
+  methods: {
+    ...mapActions(["setPatientModal"]),
+  },
   data() {
     return {
       team,
