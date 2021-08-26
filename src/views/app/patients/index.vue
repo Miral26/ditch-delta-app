@@ -6,30 +6,32 @@
       <div class="flex-1 flex items-stretch overflow-hidden">
         <main class="flex-1 overflow-y-auto">
           <div class="pt-8 max-w-9xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h3 class="font-semibold text-xl">Patients</h3>
-            <button
-              type="button"
-              class="
-                inline-flex
-                items-center
-                px-4
-                py-2
-                border border-transparent
-                shadow-sm
-                text-sm
-                font-medium
-                rounded-full
-                text-white
-                bg-green-600
-                hover:bg-green-700
-                focus:outline-none
-                focus:ring-2 focus:ring-offset-2 focus:ring-green-500
-              "
-              @click="() => setPatientModal(true)"
-            >
-              <PlusSmIcon class="-ml-1 mr-2 h-5 w-5" aria-hidden="true" />
-              Create
-            </button>
+            <div class="flex justify-between items-center">
+              <h3 class="font-semibold text-xl">Patients</h3>
+              <button
+                type="button"
+                class="
+                  inline-flex
+                  items-center
+                  px-4
+                  py-2
+                  border border-transparent
+                  shadow-sm
+                  text-sm
+                  font-medium
+                  rounded-full
+                  text-white
+                  bg-green-600
+                  hover:bg-green-700
+                  focus:outline-none
+                  focus:ring-0
+                "
+                @click="() => setPatientModal(true)"
+              >
+                <PlusSmIcon class="-ml-1 mr-2 h-5 w-5" aria-hidden="true" />
+                Create
+              </button>
+            </div>
             <section class="mt-8 pb-16">
               <Table />
             </section>

@@ -41,7 +41,7 @@
               </div>
 
               <div class="hidden sm:block">
-                <div class="flex items-center">
+                <div class="flex items-center justify-between">
                   <nav class="flex-1 -mb-px flex space-x-3" aria-label="Tabs">
                     <a
                       v-for="tab in tabs"
@@ -65,6 +65,28 @@
                       ></span>
                     </a>
                   </nav>
+                  <button
+                    type="button"
+                    class="
+                      inline-flex
+                      items-center
+                      px-4
+                      py-2
+                      border border-transparent
+                      shadow-sm
+                      text-sm
+                      font-medium
+                      rounded-full
+                      text-white
+                      bg-green-600
+                      hover:bg-green-700
+                      focus:outline-none
+                      focus:ring-0
+                    "
+                  >
+                    <PlusSmIcon class="-ml-1 mr-2 h-5 w-5" aria-hidden="true" />
+                    Create
+                  </button>
                 </div>
               </div>
             </div>
@@ -111,7 +133,7 @@ import {
   PhotographIcon,
   UserGroupIcon,
 } from "@heroicons/vue/outline";
-// import { PlusSmIcon } from "@heroicons/vue/solid";
+import { PlusSmIcon } from "@heroicons/vue/solid";
 import Table from "./table.vue";
 const navigation = [
   { name: "Home", href: "#", icon: HomeIcon, current: false },
@@ -132,7 +154,7 @@ const tabs = [
 ];
 
 export default {
-  components: { Table },
+  components: { Table, PlusSmIcon },
   data() {
     const mobileMenuOpen = ref(false);
     return {

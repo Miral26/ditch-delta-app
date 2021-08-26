@@ -18,7 +18,7 @@
   <TransitionRoot as="template" :show="showPatientModal">
     <Dialog
       as="div"
-      class="fixed inset-0 overflow-hidden"
+      class="fixed inset-0 overflow-hidden z-50"
       @close="() => setPatientModal(false)"
     >
       <div class="absolute inset-0 overflow-hidden">

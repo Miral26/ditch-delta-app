@@ -16,7 +16,7 @@
 -->
 <template>
   <TransitionRoot as="template" :show="openModal">
-    <Dialog as="div" class="fixed inset-0 overflow-hidden" @close="closeModal">
+    <Dialog as="div" class="fixed inset-0 overflow-hidden z-50" @close="closeModal">
       <div class="absolute inset-0 overflow-hidden">
         <DialogOverlay class="absolute inset-0" />
 
