@@ -49,7 +49,12 @@
                 font-normal
                 focus:outline-none
               "
-              @click="openUserModal"
+              @click="
+                () => {
+                  setSelectedUser({});
+                  setUserModal(true);
+                }
+              "
             >
               Add User
             </button>
@@ -73,27 +78,19 @@
         </div>
       </div>
     </div>
-    <UserModal :open="showUserModal" :onClose="closeUserModal" />
   </div>
 </template>
 
 <script>
-import UserModal from "./user-modal.vue";
+import { mapActions } from "vuex";
 import Table from "./table.vue";
 export default {
-  components: { UserModal, Table },
+  components: { Table },
   data() {
-    return {
-      showUserModal: false,
-    };
+    return {};
   },
   methods: {
-    closeUserModal() {
-      this.showUserModal = false;
-    },
-    openUserModal() {
-      this.showUserModal = true;
-    },
+    ...mapActions(["setUserModal", "setSelectedUser"]),
   },
 };
 </script>

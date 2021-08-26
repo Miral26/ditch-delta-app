@@ -1,11 +1,11 @@
 <!-- This example requires Tailwind CSS v2.0+ -->
 <template>
-  <TransitionRoot as="template" :show="open">
+  <TransitionRoot as="template" :show="showUserModal">
     <Dialog
       as="div"
       auto-reopen="true"
       class="fixed z-10 inset-0 overflow-y-auto"
-      @close="onClose"
+      @close="() => setUserModal(false)"
     >
       <div
         class="
@@ -70,11 +70,28 @@
             <div>
               <DialogTitle
                 as="h3"
-                class="text-lg leading-6 font-medium text-gray-900 p-4 border-b border-solid border-gray"
+                class="
+                  text-lg
+                  leading-6
+                  font-medium
+                  text-gray-900
+                  p-4
+                  border-b border-solid border-gray
+                "
               >
-                Add User
+                {{ getSelectedUser?.name ? "Edit" : "Add" }} User
                 <div class="hidden sm:block absolute top-0 right-0 pt-4 pr-4">
-                  <button type="button" class="bg-white rounded-md text-gray-400 hover:text-gray-500 focus:outline-none" @click="onClose">
+                  <button
+                    type="button"
+                    class="
+                      bg-white
+                      rounded-md
+                      text-gray-400
+                      hover:text-gray-500
+                      focus:outline-none
+                    "
+                    @click="() => setUserModal(false)"
+                  >
                     <span class="sr-only">Close</span>
                     <XIcon class="h-6 w-6" aria-hidden="true" />
                   </button>
@@ -96,8 +113,9 @@
                       focus:outline-none
                       focus:ring-0
                       sm:text-sm
-                      text-white
+                      text-grey
                     "
+                    :value="getSelectedUser?.name"
                     placeholder="Enter your name..."
                     type="text"
                   />
@@ -117,8 +135,9 @@
                       focus:outline-none
                       focus:ring-0
                       sm:text-sm
-                      text-white
+                      text-grey
                     "
+                    :value="getSelectedUser?.email"
                     placeholder="Enter email"
                     type="text"
                   />
@@ -138,8 +157,9 @@
                       focus:outline-none
                       focus:ring-0
                       sm:text-sm
-                      text-white
+                      text-grey
                     "
+                    :value="getSelectedUser?.role"
                     placeholder="Permission Level..."
                     type="text"
                   />
@@ -162,7 +182,7 @@
                     focus:outline-none
                     sm:text-sm
                   "
-                  @click="onClose"
+                  @click="() => setUserModal(false)"
                 >
                   Submit
                 </button>
@@ -182,10 +202,9 @@ import {
   DialogTitle,
   TransitionChild,
   TransitionRoot,
-  
 } from "@headlessui/vue";
-import { XIcon } from '@heroicons/vue/outline'
-
+import { XIcon } from "@heroicons/vue/outline";
+import { mapActions, mapGetters } from "vuex";
 
 export default {
   components: {
@@ -194,11 +213,13 @@ export default {
     DialogTitle,
     TransitionChild,
     TransitionRoot,
-    XIcon
+    XIcon,
   },
-  props: {
-    open: Boolean,
-    onClose: Function,
+  computed: {
+    ...mapGetters(["showUserModal", "getSelectedUser"]),
+  },
+  methods: {
+    ...mapActions(["setUserModal"]),
   },
 };
 </script>

@@ -8,6 +8,10 @@
           <div class="pt-8 max-w-9xl mx-auto px-4 sm:px-6 lg:px-8">
             <h3 class="font-semibold text-xl">Users</h3>
             <UsersTable />
+            <UserModal
+              :open="showUserModal"
+              :onClose="() => setUserModal(false)"
+            />
           </div>
         </main>
       </div>
@@ -16,12 +20,19 @@
 </template>
 
 <script>
+import { mapActions, mapGetters } from "vuex";
 import UsersTable from "./user-table.vue";
+import UserModal from "./user-modal.vue";
 
 export default {
   name: "Users",
+  computed: {
+    ...mapGetters(["showUserModal"]),
+  },
   data() {},
-  components: { UsersTable },
-  methods: {},
+  components: { UsersTable, UserModal },
+  methods: {
+    ...mapActions(["setUserModal"]),
+  },
 };
 </script>

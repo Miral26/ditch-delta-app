@@ -4,6 +4,7 @@ import claim from "./modules/claim";
 import location from "./modules/location";
 import card from "./modules/card";
 import authData from "./modules/authData";
+import users from "./modules/users";
 
 
 // Create store
@@ -13,6 +14,7 @@ export default createStore({
     claim,
     location,
     card,
-    authData
+    authData,
+    users
   },
 });

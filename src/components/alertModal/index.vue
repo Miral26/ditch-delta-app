@@ -1,11 +1,10 @@
 <!-- This example requires Tailwind CSS v2.0+ -->
 <template>
-  <TransitionRoot as="template" :show="open">
+  <TransitionRoot as="template" :show="openModal">
     <Dialog
       as="div"
-      auto-reopen="true"
       class="fixed z-10 inset-0 overflow-y-auto"
-      @close="open = false"
+      @close="closeModal"
     >
       <div
         class="
@@ -66,42 +65,49 @@
               transition-all
               sm:my-8
               sm:align-middle
-              sm:max-w-sm
+              sm:max-w-lg
               sm:w-full
               sm:p-6
             "
           >
-            <div>
+            <div class="sm:flex sm:items-start">
               <div
                 class="
                   mx-auto
-                  flex
+                  flex-shrink-0 flex
                   items-center
                   justify-center
                   h-12
                   w-12
                   rounded-full
-                  bg-green-100
+                  bg-red-100
+                  sm:mx-0
+                  sm:h-10
+                  sm:w-10
                 "
               >
-                <CheckIcon class="h-6 w-6 text-green-600" aria-hidden="true" />
+                <ExclamationIcon
+                  class="h-6 w-6 text-red-600"
+                  aria-hidden="true"
+                />
               </div>
-              <div class="mt-3 text-center sm:mt-5">
+              <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
                 <DialogTitle
                   as="h3"
                   class="text-lg leading-6 font-medium text-gray-900"
                 >
-                  Payment successful
+                  Deactivate account
                 </DialogTitle>
                 <div class="mt-2">
                   <p class="text-sm text-gray-500">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Consequatur amet labore.
+                    Are you sure you want to deactivate your account? All of
+                    your data will be permanently removed from our servers
+                    forever. This action cannot be undone.
                   </p>
                 </div>
               </div>
             </div>
-            <div class="mt-5 sm:mt-6">
+            <div class="mt-5 sm:mt-4 sm:ml-10 sm:pl-4 sm:flex">
               <button
                 type="button"
                 class="
@@ -113,18 +119,48 @@
                   shadow-sm
                   px-4
                   py-2
-                  bg-green-600
+                  bg-red-600
                   text-base
                   font-medium
                   text-white
-                  hover:bg-green-700
+                  hover:bg-red-700
                   focus:outline-none
-                  focus:ring-2 focus:ring-offset-2 focus:ring-green-500
+                  focus:ring-2 focus:ring-offset-2 focus:ring-red-500
+                  sm:w-auto
                   sm:text-sm
                 "
-                @click="open = false"
+                @click="closeModal"
               >
-                Go back to dashboard
+                Delete
+              </button>
+              <button
+                type="button"
+                class="
+                  mt-3
+                  w-full
+                  inline-flex
+                  justify-center
+                  rounded-md
+                  border border-gray-300
+                  px-4
+                  py-2
+                  bg-white
+                  text-base
+                  font-medium
+                  text-gray-700
+                  shadow-sm
+                  hover:bg-gray-50
+                  focus:outline-none
+                  focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500
+                  sm:mt-0
+                  sm:ml-3
+                  sm:w-auto
+                  sm:text-sm
+                "
+                @click="closeModal"
+                ref="cancelButtonRef"
+              >
+                Cancel
               </button>
             </div>
           </div>
@@ -135,7 +171,6 @@
 </template>
 
 <script>
-import { ref } from "vue";
 import {
   Dialog,
   DialogOverlay,
@@ -143,7 +178,7 @@ import {
   TransitionChild,
   TransitionRoot,
 } from "@headlessui/vue";
-import { CheckIcon } from "@heroicons/vue/outline";
+import { ExclamationIcon } from "@heroicons/vue/outline";
 
 export default {
   components: {
@@ -152,14 +187,8 @@ export default {
     DialogTitle,
     TransitionChild,
     TransitionRoot,
-    CheckIcon,
+    ExclamationIcon,
   },
-  setup() {
-    const open = ref(true);
-
-    return {
-      open,
-    };
-  },
+  props: { openModal: Boolean, closeModal: Function },
 };
 </script>

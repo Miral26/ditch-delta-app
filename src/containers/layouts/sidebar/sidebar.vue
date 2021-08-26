@@ -340,6 +340,7 @@ import {
   ChevronRightIcon,
   OfficeBuildingIcon,
   SearchIcon,
+  LocationMarkerIcon,
 } from "@heroicons/vue/solid";
 import Topbar from "./topBar.vue";
 import Sidebar from "./sidebar.vue";
@@ -376,6 +377,12 @@ const navigation = [
     redirectTo: "insights",
     icon: DocumentReportIcon,
     selectedParentMenu: "insights",
+  },
+  {
+    name: "Locations",
+    redirectTo: "locations",
+    icon: LocationMarkerIcon,
+    selectedParentMenu: "locations",
   },
 ];
 

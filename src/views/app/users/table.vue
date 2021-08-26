@@ -125,7 +125,15 @@
                     font-medium
                   "
                 >
-                  <a href="#" class="text-indigo-600 hover:text-indigo-900"
+                  <a
+                    href="javascript:void(0)"
+                    @click="
+                      () => {
+                        setSelectedUser(person);
+                        setUserModal(true);
+                      }
+                    "
+                    class="text-green-600 hover:text-green-900"
                     >Edit</a
                   >
                 </td>
@@ -139,6 +147,7 @@
 </template>
 
 <script>
+import { mapActions } from "vuex";
 const people = [
   {
     name: "Jane Cooper",
@@ -201,6 +210,9 @@ export default {
     return {
       people,
     };
+  },
+  methods: {
+    ...mapActions(["setUserModal", "setSelectedUser"]),
   },
 };
 </script>
