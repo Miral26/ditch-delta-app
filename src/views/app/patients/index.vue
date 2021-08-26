@@ -14,13 +14,16 @@
         </main>
       </div>
     </div>
+    <PatientSideView />
   </div>
 </template>
 
 <script>
 import Table from "./table.vue";
+import PatientSideView from "../../../components/patientSideView";
+
 export default {
-  components: { Table },
+  components: { Table, PatientSideView },
   data() {
     return {
       showClaimModal: false,

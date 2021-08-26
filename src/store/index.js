@@ -5,6 +5,7 @@ import location from "./modules/location";
 import card from "./modules/card";
 import authData from "./modules/authData";
 import users from "./modules/users";
+import patients from "./modules/patients";
 
 
 // Create store
@@ -15,6 +16,7 @@ export default createStore({
     location,
     card,
     authData,
-    users
+    users,
+    patients
   },
 });
