@@ -2,14 +2,30 @@
     color: #00c5b4;
 }
 
+.dark-green-text:hover {
+    color: #6cdcd4;
+}
+
 .light-green-text {
     color: #6cdcd4;
 }
 
+.dark-green-bg-200 {
+    background: #6cdcd4;
+}
+
 .dark-green-bg {
-    color: #00c5b4;
+    background: #00c5b4;
 }
 
 .light-green-bg {
-    color: #6cdcd4;
+    background: #f2f7fc;
+}
+
+.hover-dark-green-bg:hover {
+    background: #00c5b4;
+}
+
+.hover-light-green-bg:hover {
+    background: #6cdcd4;
 }

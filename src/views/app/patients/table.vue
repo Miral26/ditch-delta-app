@@ -1,9 +1,7 @@
 <!-- This example requires Tailwind CSS v2.0+ -->
 <template>
   <div class="flex flex-col">
-    <div
-      class="shadow overflow-x-auto border-b border-gray-200 sm:rounded-lg"
-    >
+    <div class="shadow overflow-x-auto border-b border-gray-200 sm:rounded-lg">
       <table class="min-w-full divide-y divide-gray-200">
         <thead class="bg-gray-50">
           <tr>
@@ -64,28 +62,29 @@
               </div>
             </td>
             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-              <a href="#" class="text-green-600 hover:text-green-900"
-                >View</a
-              >
+              <a href="#" class="dark-green-text">View</a>
             </td>
             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-              <a href="#" class="text-green-600 hover:text-green-900"
+              <a
+                href="javascript:void(0)"
+                class="dark-green-text"
+                @click="() => setPaymentModal(true)"
                 >Add</a
               >
             </td>
             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
               <a
                 href="javascript:void(0)"
-                @click="() => openModal('claim')"
-                class="text-green-600 hover:text-green-900"
+                @click="() => setPatientModal(true)"
+                class="dark-green-text"
                 >Create</a
               >
             </td>
             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
               <a
                 href="javascript:void(0)"
-                @click="() => openModal('claim')"
-                class="text-green-600 hover:text-green-900 pr-3"
+                @click="() => setPatientModal(true)"
+                class="dark-green-text pr-3"
                 >Edit</a
               >
               <a
@@ -113,6 +112,7 @@
 <script>
 import ClaimSideView from "../../../components/claimSideView";
 import AlertModal from "../../../components/alertModal";
+import { mapActions } from "vuex";
 
 const columns = [
   {
@@ -228,11 +228,9 @@ export default {
     };
   },
   methods: {
+    ...mapActions(["setPatientModal", "setPaymentModal"]),
     openModal(type) {
       switch (type) {
-        case "claim":
-          this.showClaimModal = true;
-          break;
         case "confirmation":
           this.showConfirmationModal = true;
           break;
@@ -240,9 +238,6 @@ export default {
     },
     closeModal(type) {
       switch (type) {
-        case "claim":
-          this.showClaimModal = false;
-          break;
         case "confirmation":
           this.showConfirmationModal = false;
           break;

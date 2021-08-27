@@ -42,27 +42,32 @@
 
               <div class="hidden sm:block">
                 <div class="flex items-center justify-between">
-                  <nav class="flex-1 -mb-px flex space-x-3" aria-label="Tabs">
+                  <nav class="-mb-px flex space-x-8" aria-label="Tabs">
                     <a
                       v-for="tab in tabs"
                       :key="tab.id"
-                      :aria-current="tab.id ? 'page' : undefined"
+                      :aria-current="
+                        tab.id === selectedTab.id ? 'page' : undefined
+                      "
                       @click="selectedTab = tab"
                       :class="[
                         tab.id === selectedTab.id
-                          ? 'text-green-600'
-                          : 'text-gray-500 hover:text-gray-700',
-                        'whitespace-nowrap py-4 px-1 font-medium text-sm cursor-pointer',
+                          ? 'border-green-500 dark-green-text'
+                          : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-200',
+                        'whitespace-nowrap flex py-4 px-1 border-b-2 font-medium text-sm cursor-pointer',
                       ]"
                     >
                       {{ tab.name }}
                       <span
+                        v-if="tab.count"
                         :class="[
                           tab.id === selectedTab.id
-                            ? 'w-5 h-0.5 bg-green-500 table mx-auto mt-1.5'
-                            : '',
+                            ? 'dark-green-bg text-gray-900'
+                            : 'bg-gray-100 text-gray-900',
+                          'hidden ml-3 py-0.5 px-2.5 rounded-full text-xs font-medium md:inline-block',
                         ]"
-                      ></span>
+                        >{{ tab.count }}</span
+                      >
                     </a>
                   </nav>
                   <button
@@ -78,49 +83,27 @@
                       font-medium
                       rounded-full
                       text-white
-                      bg-green-600
-                      hover:bg-green-700
+                      dark-green-bg
+                      hover-light-green-bg
                       focus:outline-none
                       focus:ring-0
                     "
+                    @click="() => setClaimModal(true)"
                   >
-                    <PlusSmIcon class="-ml-1 mr-2 h-5 w-5" aria-hidden="true" />
                     Create
                   </button>
                 </div>
               </div>
             </div>
 
-            <!-- Gallery -->
             <section class="mt-8 pb-16">
-              <!-- <button
-                type="button"
-                class="
-                  inline-flex
-                  items-center
-                  px-4
-                  py-2
-                  border border-transparent
-                  shadow-sm
-                  text-sm
-                  font-medium
-                  rounded-full
-                  text-white
-                  bg-green-600
-                  hover:bg-green-700
-                  focus:outline-none
-                  focus:ring-2 focus:ring-offset-2 focus:ring-green-500
-                "
-              >
-                <PlusSmIcon class="-ml-1 mr-2 h-5 w-5" aria-hidden="true" />
-                Create
-              </button> -->
               <Table :selectedTab="selectedTab" />
             </section>
           </div>
         </main>
       </div>
     </div>
+    <ClaimSideView />
   </div>
 </template>
 
@@ -133,8 +116,10 @@ import {
   PhotographIcon,
   UserGroupIcon,
 } from "@heroicons/vue/outline";
-import { PlusSmIcon } from "@heroicons/vue/solid";
 import Table from "./table.vue";
+import ClaimSideView from "../../../components/claimSideView";
+import { mapActions } from "vuex";
+
 const navigation = [
   { name: "Home", href: "#", icon: HomeIcon, current: false },
   // { name: "All Files", href: "#", icon: ViewGridIconOutline, current: false },
@@ -148,13 +133,13 @@ const userNavigation = [
   { name: "Sign out", href: "#" },
 ];
 const tabs = [
-  { name: "In Progress", id: "in-progress" },
-  { name: "Pending", id: "pending" },
-  { name: "Completed", id: "completed" },
+  { name: "In Progress", id: "in-progress", count: 10 },
+  { name: "Pending", id: "pending", count: 5 },
+  { name: "Completed", id: "completed", count: 9 },
 ];
 
 export default {
-  components: { Table, PlusSmIcon },
+  components: { Table, ClaimSideView },
   data() {
     const mobileMenuOpen = ref(false);
     return {
@@ -164,6 +149,9 @@ export default {
       mobileMenuOpen,
       selectedTab: { name: "In Progress", id: "in-progress" },
     };
+  },
+  methods: {
+    ...mapActions(["setClaimModal"]),
   },
 };
 </script>

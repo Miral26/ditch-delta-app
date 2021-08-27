@@ -13,7 +13,7 @@ const routes = [
     path: "/signIn",
     name: "Authentication",
     beforeEnter: unAuthenticate,
-    component: () => import('../views/app/session/signIn.vue')
+    component: () => import('../views/app/session/new-signIn.vue')
   },
   {
     path: "/app",

@@ -68,8 +68,8 @@
                 <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
                   <a
                     href="javascript:void(0)"
-                    @click="() => openModal('claim')"
-                    class="text-green-600 hover:text-green-900 pr-3"
+                    @click="() => setLocationModal(true)"
+                    class="dark-green-text pr-3"
                     >Edit</a
                   >
                 </td>
@@ -79,14 +79,12 @@
         </div>
       </div>
     </div>
-    <LocationSideView
-      :openModal="showLocationModal"
-      :closeModal="() => closeModal('location')"
-    />
+    <LocationSideView />
   </div>
 </template>
 
 <script>
+import { mapActions } from "vuex";
 import LocationSideView from "../../../components/locationSideView";
 
 const columns = [
@@ -175,20 +173,7 @@ export default {
     };
   },
   methods: {
-    openModal(type) {
-      switch (type) {
-        case "location":
-          this.showLocationModal = true;
-          break;
-      }
-    },
-    closeModal(type) {
-      switch (type) {
-        case "location":
-          this.showLocationModal = false;
-          break;
-      }
-    },
+    ...mapActions(["setLocationModal"]),
   },
 };
 </script>

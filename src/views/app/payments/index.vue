@@ -8,7 +8,7 @@
           <div class="pt-8 max-w-9xl mx-auto px-4 sm:px-6 lg:px-8">
             <h3 class="font-semibold text-xl">Payments</h3>
             <!-- Tabs -->
-            <div class="mt-3 sm:mt-2">
+            <div class="mt-3">
               <div class="sm:hidden">
                 <label for="tabs" class="sr-only">Select a tab</label>
                 <select
@@ -23,8 +23,6 @@
                     text-base
                     border-gray-300
                     focus:outline-none
-                    focus:ring-green-500
-                    focus:border-green-500
                     sm:text-sm
                     rounded-md
                   "
@@ -32,36 +30,40 @@
                   <option
                     v-for="tab in tabs"
                     :key="tab.name"
-                    :selected="tab.id === selectedTab.id"
+                    :selected="tab.current"
                   >
                     {{ tab.name }}
                   </option>
                 </select>
               </div>
-
               <div class="hidden sm:block">
-                <div class="flex items-center">
-                  <nav class="flex-1 -mb-px flex space-x-3" aria-label="Tabs">
+                <div class="border-b border-gray-200">
+                  <nav class="-mb-px flex space-x-8" aria-label="Tabs">
                     <a
                       v-for="tab in tabs"
                       :key="tab.id"
-                      :aria-current="tab.id ? 'page' : undefined"
+                      :aria-current="
+                        tab.id === selectedTab.id ? 'page' : undefined
+                      "
                       @click="selectedTab = tab"
                       :class="[
-                        selectedTab.id === tab.id
-                          ? 'text-green-600'
-                          : 'text-gray-500 hover:text-gray-700',
-                        'whitespace-nowrap py-4 px-1 font-medium text-sm cursor-pointer',
+                        tab.id === selectedTab.id
+                          ? 'border-green-500 dark-green-text'
+                          : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-200',
+                        'whitespace-nowrap flex py-4 px-1 border-b-2 font-medium text-sm cursor-pointer',
                       ]"
                     >
                       {{ tab.name }}
                       <span
+                        v-if="tab.count"
                         :class="[
-                          selectedTab.id === tab.id
-                            ? 'w-5 h-0.5 bg-green-500 table mx-auto mt-1.5'
-                            : '',
+                          tab.id === selectedTab.id
+                            ? 'dark-green-bg text-gray-900'
+                            : 'bg-gray-100 text-gray-900',
+                          'hidden ml-3 py-0.5 px-2.5 rounded-full text-xs font-medium md:inline-block',
                         ]"
-                      ></span>
+                        >{{ tab.count }}</span
+                      >
                     </a>
                   </nav>
                 </div>
@@ -103,10 +105,10 @@ const userNavigation = [
   { name: "Sign out", href: "#" },
 ];
 const tabs = [
-  { name: "Pending", id: "pending" },
-  { name: "Completed", id: "completed" },
+  { name: "Pending", id: "pending", count: 10 },
+  { name: "Completed", id: "completed", count: 16 },
   { name: "Refunded", id: "refunded" },
-  { name: "Failed", id: "failed" },
+  { name: "Failed", id: "failed", count: 1 },
 ];
 
 export default {

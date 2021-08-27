@@ -4,10 +4,12 @@ export default {
   state: {
     locations: null,
     selectedLocation: 'Australia',
+    showModal: false,
   },
   getters: {
     getLocations: (state) => state.locations,
     getSelectedLocation: (state) => state.selectedLocation,
+    showLocationModal: (state) => state.showModal
   },
   mutations: {
     SET_LOCATIONS(state, data) {
@@ -20,6 +22,9 @@ export default {
         state.selectedLocation = f;
         localStorage.setItem("delta-app-loc", state.selectedLocation.id);
       }
+    },
+    SET_LOCATION_MODAL(state, data) {
+      state.showModal = data;
     },
   },
   actions: {
@@ -44,6 +49,9 @@ export default {
     },
     setSelectedLocation({ commit }, data) {
       commit("SET_SELECTED_LOCATION", data);
+    },
+    setLocationModal({ commit }, data) {
+      commit("SET_LOCATION_MODAL", data);
     },
   },
 };

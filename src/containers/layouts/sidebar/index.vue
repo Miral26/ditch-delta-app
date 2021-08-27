@@ -25,11 +25,11 @@
 -->
 <template>
   <div class="relative h-screen flex overflow-hidden bg-gray-100">
-    <Sidebar />
+    <NewSidebar />
     <div class="flex-1 overflow-auto focus:outline-none">
       <Topbar />
-      <main class="flex-1 relative pb-8 z-0 overflow-y-auto">
-        <router-view />
+      <main class="flex-1 relative z-0 overflow-y-auto">
+        <router-view class="light-green-bg" />
       </main>
     </div>
   </div>
@@ -37,12 +37,12 @@
 
 <script>
 import Topbar from "./topBar.vue";
-import Sidebar from "./sidebar.vue";
+import NewSidebar from "./new-sidebar.vue";
 
 export default {
   components: {
     Topbar,
-    Sidebar,
+    NewSidebar,
   },
   setup() {},
 };

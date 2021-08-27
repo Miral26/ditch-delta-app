@@ -3,8 +3,8 @@ const state = {
     dark: false,
     light: true,
     semi_dark: false,
+    sideMenu: false,
     theme_color: "lite-purple",
-    // layout: "large-sidebar",
     layout: "vertical-sidebar",
     rtl: false,
   },
@@ -12,9 +12,13 @@ const state = {
 
 const getters = {
   getThemeMode: (state) => state.themeMode,
+  showSideMenu: (state) => state.themeMode.sideMenu,
 };
 
 const actions = {
+  toggleSideMenu({ commit }) {
+    commit("toggleSideMenuBar");
+  },
   changeThemeMode({ commit }) {
     commit("toggleThemeMode");
   },
@@ -35,6 +39,9 @@ const mutations = {
   },
   toggleThemeRtl(state) {
     state.themeMode.rtl = !state.themeMode.rtl;
+  },
+  toggleSideMenuBar(state) {
+    state.themeMode.sideMenu = !state.themeMode.sideMenu;
   },
 };
 

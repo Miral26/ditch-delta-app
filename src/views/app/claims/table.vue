@@ -75,7 +75,7 @@
                   {{ person.notes }}
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                  <a href="#" class="text-green-600 hover:text-green-900"
+                  <a href="javascript:void(0)" class="dark-green-text" @click="() => setClaimModal(true)"
                     >Edit</a
                   >
                 </td>
@@ -89,6 +89,7 @@
 </template>
 
 <script>
+import { mapActions } from "vuex";
 const columns = [
   {
     id: 1,
@@ -178,11 +179,14 @@ const people = [
 
 export default {
   props: { selectedTab: { name: String, id: String } },
-  setup() {
+  data() {
     return {
       people,
       columns,
     };
+  },
+  methods: {
+    ...mapActions(["setClaimModal"]),
   },
 };
 </script>

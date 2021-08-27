@@ -21,14 +21,13 @@
                   font-medium
                   rounded-full
                   text-white
-                  bg-green-600
-                  hover:bg-green-700
+                  dark-green-bg
+                  hover-light-green-bg
                   focus:outline-none
                   focus:ring-0
                 "
                 @click="() => setPatientModal(true)"
               >
-                <PlusSmIcon class="-ml-1 mr-2 h-5 w-5" aria-hidden="true" />
                 Create
               </button>
             </div>
@@ -40,17 +39,18 @@
       </div>
     </div>
     <PatientSideView />
+    <PaymentModal />
   </div>
 </template>
 
 <script>
 import Table from "./table.vue";
 import PatientSideView from "../../../components/patientSideView";
-import { PlusSmIcon } from "@heroicons/vue/outline";
+import PaymentModal from "../../../components/paymentModal";
 import { mapActions } from "vuex";
 
 export default {
-  components: { Table, PatientSideView, PlusSmIcon },
+  components: { Table, PatientSideView, PaymentModal },
   data() {
     return {};
   },
