@@ -75,7 +75,7 @@
             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
               <a
                 href="javascript:void(0)"
-                @click="() => setPatientModal(true)"
+                @click="() => setClaimModal(true)"
                 class="dark-green-text"
                 >Create</a
               >
@@ -102,7 +102,7 @@
       :openModal="showClaimModal"
       :closeModal="() => closeModal('claim')"
     />
-    <AlertModal
+    <ConfirmModal
       :openModal="showConfirmationModal"
       :closeModal="() => closeModal('confirmation')"
     />
@@ -111,7 +111,7 @@
 
 <script>
 import ClaimSideView from "../../../components/claimSideView";
-import AlertModal from "../../../components/alertModal";
+import ConfirmModal from "../../../components/confirmModal";
 import { mapActions } from "vuex";
 
 const columns = [
@@ -218,7 +218,7 @@ const people = [
 ];
 
 export default {
-  components: { ClaimSideView, AlertModal },
+  components: { ClaimSideView, ConfirmModal },
   data() {
     return {
       people,
@@ -228,7 +228,7 @@ export default {
     };
   },
   methods: {
-    ...mapActions(["setPatientModal", "setPaymentModal"]),
+    ...mapActions(["setPatientModal", "setPaymentModal", "setClaimModal"]),
     openModal(type) {
       switch (type) {
         case "confirmation":

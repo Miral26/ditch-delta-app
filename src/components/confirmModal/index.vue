@@ -70,23 +70,48 @@
               sm:p-6
             "
           >
-            <div class="text-center">
-              <DialogTitle as="h3" class="text-2xl leading-6 font-medium mb-4 text-gray-900">
-                Are you sure?
-              </DialogTitle>
-              <div class="mt-2">
-                <h5 class="text-lg text-gray-500">
-                  You won't be able to revert this!
-                </h5>
+            <div class="sm:flex sm:items-start">
+              <div
+                class="
+                  mx-auto
+                  flex-shrink-0 flex
+                  items-center
+                  justify-center
+                  h-12
+                  w-12
+                  rounded-full
+                  bg-red-100
+                  sm:mx-0
+                  sm:h-10
+                  sm:w-10
+                "
+              >
+                <ExclamationIcon
+                  class="h-6 w-6 text-red-600"
+                  aria-hidden="true"
+                />
+              </div>
+              <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+                <DialogTitle
+                  as="h3"
+                  class="text-lg leading-6 font-medium text-gray-900"
+                >
+                  Are you sure?
+                </DialogTitle>
+                <div class="mt-2">
+                  <p class="text-lg text-gray-500">
+                    You won't be able to revert this!
+                  </p>
+                </div>
               </div>
             </div>
-            <div class="mt-5 sm:mt-4 flex justify-center">
+            <div class="mt-5 sm:mt-4 sm:flex sm:flex-row-reverse">
               <button
                 type="button"
                 class="
+                  w-full
                   inline-flex
                   justify-center
-                  w-full
                   rounded-md
                   border border-transparent
                   shadow-sm
@@ -99,6 +124,7 @@
                   hover:bg-red-700
                   focus:outline-none
                   focus:ring-0
+                  sm:ml-3
                   sm:w-auto
                   sm:text-sm
                 "
@@ -115,18 +141,17 @@
                   justify-center
                   rounded-md
                   border border-gray-300
+                  shadow-sm
                   px-4
                   py-2
                   bg-white
                   text-base
                   font-medium
                   text-gray-700
-                  shadow-sm
                   hover:bg-gray-50
                   focus:outline-none
                   focus:ring-0
                   sm:mt-0
-                  sm:ml-3
                   sm:w-auto
                   sm:text-sm
                 "
@@ -151,6 +176,7 @@ import {
   TransitionChild,
   TransitionRoot,
 } from "@headlessui/vue";
+import { ExclamationIcon } from "@heroicons/vue/outline";
 
 export default {
   components: {
@@ -159,6 +185,7 @@ export default {
     DialogTitle,
     TransitionChild,
     TransitionRoot,
+    ExclamationIcon,
   },
   props: { openModal: Boolean, closeModal: Function },
 };

@@ -68,7 +68,7 @@
 
                   <div class="px-6 pt-6 pb-16">
                     <h5>Create New Claim</h5>
-                    <form action="#" method="POST">
+                    <form>
                       <div class="overflow-hidden sm:rounded-md">
                         <div class="py-5 bg-white">
                           <div class="grid grid-cols-6 gap-6">
@@ -377,7 +377,6 @@
                             Save
                           </button>
                           <button
-                            type="submit"
                             class="
                               inline-flex
                               justify-center

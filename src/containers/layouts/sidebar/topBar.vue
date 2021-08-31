@@ -197,6 +197,7 @@
                 hover-light-green-bg
                 focus:outline-none
               "
+              @click="showCronJobModal = true"
             >
               Run daily job
             </button>
@@ -204,6 +205,10 @@
         </div>
       </div>
     </header>
+    <CronJobModal
+      :openModal="showCronJobModal"
+      :closeModal="closeCronJobModal"
+    />
   </div>
 </template>
 
@@ -211,6 +216,7 @@
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/vue";
 import { HomeIcon, SearchIcon } from "@heroicons/vue/outline";
 import { mapActions } from "vuex";
+import CronJobModal from "../../../components/cronJobModal";
 
 export default {
   components: {
@@ -220,10 +226,18 @@ export default {
     MenuItems,
     SearchIcon,
     HomeIcon,
+    CronJobModal,
   },
-  setup() {},
+  data() {
+    return {
+      showCronJobModal: false,
+    };
+  },
   methods: {
     ...mapActions(["signOut", "toggleSideMenu"]),
+    closeCronJobModal() {
+      this.showCronJobModal = false;
+    },
   },
 };
 </script>

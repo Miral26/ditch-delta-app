@@ -60,14 +60,14 @@
                       </div>
                       <div class="space-y-1">
                         <DialogTitle class="text-lg font-medium text-gray-900">
-                          Claim Information
+                          Patient Information
                         </DialogTitle>
                       </div>
                     </div>
                   </div>
 
                   <div class="px-6 pt-6 pb-16">
-                    <h5>Create New Claim</h5>
+                    <h5>Create New Patient</h5>
                     <form>
                       <div class="overflow-hidden sm:rounded-md">
                         <div class="py-5 bg-white">
@@ -397,7 +397,6 @@
                             Save
                           </button>
                           <button
-                            type="submit"
                             class="
                               inline-flex
                               justify-center
